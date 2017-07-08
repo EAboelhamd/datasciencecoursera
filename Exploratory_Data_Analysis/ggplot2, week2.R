@@ -5,7 +5,7 @@ library(ggplot2)
 ## this version deosn't plot the smoother !
 qplot(displ, hwy, data = mpg, geom = "point")   ## add smoother line to the plot
 geom_smooth(data = mpg, stat = "smooth", method = "auto", formula = displ ~ hwy)
-
+# geom indicates the 95% confidence intervals for the lines
 
 ## another trail .. works well 
 ggplot(mpg, aes(displ, hwy)) + geom_point() + geom_smooth()
@@ -77,7 +77,7 @@ g + geom_point() + geom_point(aes(color = mopos))  + labs(title = "MAACS Cohors"
 
 ## adding more thikker line .. through .. se = false, linetype =3 detremines the type of the line .. i.e. square
 g + geom_point() + geom_point(aes(color = mopos), size = 2, alpha = 1/2) + geom_smooth(size = 4, linetype = 3, method = "lm", se = FALSE)  
-
+## se: adds border to the regression line
 
 ## chaning the overall them 
 g + geom_point(aes(color = mopos)) + theme_bw(base_family = "Times")
@@ -100,8 +100,12 @@ g + geom_line() + coord_cartesian(ylim = c(-3, 3))
 
 ## cut() funtion to discritize the data .. 
 ## this is used if u wanna depend on numerical variable in creating differnt subplots
+## this is different from the Cut annotation in qplot .. that shows how the counts within each price 
+#grouping (bin) are distributed among the different cuts of diamonds.
+# cut: means introducing a cut variable to count the number of data points in each of its categories 
 
 cutpoints <- quantile(maacs$pm25, seq(0, 1, length = 4), na.rm = TRUE) ## nomber of intervals = length -1
+
 
 maacs$eno <- cut(maacs$pm25, cutpoints)
 
