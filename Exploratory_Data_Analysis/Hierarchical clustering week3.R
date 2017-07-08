@@ -1,4 +1,4 @@
-## Example on measuring distances types .. i.e. ecludian dist, manhattan dist ..
+## Example on measuring distances types .. i.e. eucledian dist, manhattan dist ..
 
 set.seed(1234)
 par(mar = c(0, 0, 0, 0))
