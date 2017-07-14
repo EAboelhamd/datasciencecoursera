@@ -1,3 +1,4 @@
+## note that in general .. read.table("file name") is smart enough to unzip files
 pollution <- read.csv("/home/eman/Coursera/avgpm25.csv", colClasses = c("numeric", "character", "factor", "numeric", "numeric"))
 head(pollution)
 
